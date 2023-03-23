@@ -1,0 +1,72 @@
+1.Sln, klasör ve Entities ekledik
+2.Context oluştur, EF Core Yükledik, Referans ettik; DbSet Oluşturduk.
+3.appsettings.json içinde ConnectionString oluşturduk.
+
+4.program.cs içinde ConnectionString'i servise tanımladık. Bunun için iki katmanda da Core, Design, Sql ve Tool yükledik. 
+builder.Services.AddDbContext<Context>(opt=>opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
+    ))
+	DÜZELTME:
+	Program.cs içinde servis olarak tanımladığımız bu bağlantı 8. açıklamada değişti.
+	
+5.IRepository ve Repository interface, sınıf ve methodlarını oluşturduk.
+
+6.Data katmanına kod okunurluğunu arttırmak için bir adet Extenson klasör, 
+içine de bir adet ExtensionClass, class'ın içinde de dönüş tipi 'IServiceCollection'
+olan bir servis methodu yazdık. 
+Bu method ile IoC Konteynerine IRepository<>' istediğimizde bize 'Repository<>' 
+nesne göndermesi için bir Scoped türünde bir servis göndermesini amaçladık. 
+
+7. Program.cs dosyasında 6. adımda sözünü ettiğimiz ExtensionClass'ı bir servis olarak IoC konteynere ekledik.
+builder.Services.loadDataLayerExtension(builder.Configuration);
+
+8. Program.cs içinde 4.notta bir servis olarak eklediğimiz ConnectionString'i 
+  içinde 'IServiceCollection' olan ve 7.not'ta servis olarak eklediğimiz 
+  'ExtensionClass' içindeki 'loadDataLayerExtension()' methodunun içine ekledik.
+  Bu durumda DataLayerExtension ve program.cs değişmiş oldu.
+
+9. Bu 8.Not'ta anlatılan değişiklikten sonra UI'katmanındaki SQLServer, tool ve Core dan kaldırıldı.
+ Bu paketler ihtiyaç olmadığı ve sorunlara yol açabileceği için kaldırdık.
+ Projeyi build eden Program.cs ve bunun da dizaynını yani oluşturulmasını sağlayan
+ Design paketi web sunucusu için gerekli olan birşey olduğundan onu UI içinde bırakıp,
+ Data katmanının içinden kaldırdık.
+ 
+10. Çoklu işlemlerde kullanılan UnitOfWork için klasör, interface ve Class 
+oluşturup, methodlarını yazdık.   'ExtensionClass' içindeki 
+'loadDataLayerExtension()' methodunun içine
+'services.AddScoped<IUnitOfWork, UnitOfWork>();' ekledik.  
+
+11. Services katmanında, Klasörler ve içine interface ile class yapılarını
+Oluşturup, içene methodlar yazdık. Çalıştırdığımızda bu katmanda bir 
+'ExtensionClass' olmadığı için hata verdiğinden, bu katmanda da bir tane 
+'loadServiceLayerExtension' yazdık. Bu servisi Program.cs dosyasına 
+'builder.Services.loadServiceLayerExtension();' şeklinde tanımladık.
+
+12. Area oluşturmak için, Program.cs içindeki 'MapAreaControllerRoute' yapısını
+değiştirdik. Klasörleri oluşturduk. denemesini yaptık. 
+Not: View üzerinde yapılan değişikliklerin güncellendiğinde görülmesi için
+'Microsoft.AspNetCore.Mvc.Razor.RunTimeCompilation' paketinin yüklenmesi
+ve .'AddRazorRuntimeCompilation()' şeklinde Program.cs de tanımlanması gerekir.
+
+13. 'https://themewagon.com/themes/free-responsive-bootstrap-5-html5-admin-template-sneat/'
+adresinden indirdiğimiz free tamplatein inindeki '../' yolu '~/sneat/' ile
+değiştirdik, şablondaki 'Content wrapper' bölümünü index.cshtml içine aldık.
+
+14. AutoMapper kütüphanesi,
+https://www.youtube.com/watch?v=SPZaOMRrzLQ&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=10
+ Entity katmanına DTOs klasörünü, içine 
+AnlasmaDto Classını ekledik. Service katmanına AutoMapper klasörünü ekledik.
+'AutoMapper.Extensions.Microsoft.DependencyIjection' ve 'AutoMapper' kütüphanelerini
+service katmanına ekledik.
+ AutoMapper klasörü aldına 'AnlasmaProfile' class'ını açıp içini yazdıktan sonra 
+ service katmanındaki Extension sınıfına tanımladık.
+ 
+ 15. Identity Yapısı,
+ https://www.youtube.com/watch?v=fre9V6D3apI&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=11
+  - Identity yapısı için öncelikle Entities klasörü altında gerekli olan
+  klasörleri ekledik.
+  - Context'i 'DbContext'ten kalıtım alırken 'IdentityDbContext'ten kalıtım
+  alacak şekilde değiştirdik ve 'Microsoft.AspNetCore.Identity.EntityFrameworkCore;'
+  kütüphanesi yükledik.
+  - Entiy'leri 'IdentityUser<Guid>' sınıfından kalıtım aldırdık 
+  'Microsoft.Extensions.Identity.Stores' kütüphanesini Data Katmanına yükledik.
+16. Identity Yapısının Cooke Uyarlaması 
