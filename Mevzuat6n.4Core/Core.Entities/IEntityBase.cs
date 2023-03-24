@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mevzuat6n._4Core.Core.Entities
 {
-    internal interface IEntityBase
+    public interface IEntityBase
     {
     }
 }
