@@ -1,4 +1,4 @@
-bl:3
+Bl:3
 {
   "ConnectionStrings": {
     "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Mevzuat6nDB;User Id=sa;Password=1"

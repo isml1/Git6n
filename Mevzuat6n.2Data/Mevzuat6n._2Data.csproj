@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mevzuat6n.1Entities\Mevzuat6n.1.Entity.csproj" />
+    <ProjectReference Include="..\Mevzuat6n.1Entities\Mevzuat6n._1Entities.csproj" />
   </ItemGroup>
 
 </Project>

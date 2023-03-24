@@ -7,7 +7,9 @@ builder.Services.AddDbContext<Context>(opt=>opt.UseSqlServer(builder.Configurati
     ))
 	DÜZELTME:
 	Program.cs içinde servis olarak tanımladığımız bu bağlantı 8. açıklamada değişti.
-	
+
+5. Mappings klasörü oluşturup içine map dosyalarını oluşturduk.
+
 5.IRepository ve Repository interface, sınıf ve methodlarını oluşturduk.
 
 6.Data katmanına kod okunurluğunu arttırmak için bir adet Extenson klasör, 

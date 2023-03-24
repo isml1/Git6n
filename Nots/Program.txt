@@ -1,3 +1,4 @@
+Bl:3
 using Mevzuat6n._2Data.Context;
 using Microsoft.EntityFrameworkCore;
 

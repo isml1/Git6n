@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mevzuat6n.2Data\Mevzuat6n.2.Data.csproj" />
+    <ProjectReference Include="..\Mevzuat6n.2Data\Mevzuat6n._2Data.csproj" />
   </ItemGroup>
 
 </Project>
