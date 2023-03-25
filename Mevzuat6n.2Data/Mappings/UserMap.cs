@@ -82,7 +82,6 @@ namespace Mevzuat6n._2Data.Mappings
             admin.PasswordHash = CreatePasswordHash(admin, "123456");
 
             builder.HasData(superadmin, admin);
-
         }
         private string CreatePasswordHash(AppUser user, string password)
         {
