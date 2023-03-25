@@ -57,7 +57,7 @@ değiştirdik, şablondaki 'Content wrapper' bölümünü index.cshtml içine al
 14. AutoMapper kütüphanesi,
 https://www.youtube.com/watch?v=SPZaOMRrzLQ&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=10
  Entity katmanına DTOs klasörünü, içine 
-ArticleDto Class'ını ekledik. Service katmanına AutoMapper klasörünü,
+ArticleDto Class'ını ekledik. Service katdemanına AutoMapper klasörünü,
 'AutoMapper.Extensions.Microsoft.DependencyIjection' ve 'AutoMapper' kütüphanelerini
 service katmanına ekledik.
  AutoMapper klasörü aldına 'ArticleProfile' class'ını açıp içini yazdıktan sonra 
@@ -66,11 +66,15 @@ service katmanına ekledik.
  
  15. Identity Yapısı,
  https://www.youtube.com/watch?v=fre9V6D3apI&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=11
-  - Identity yapısı için öncelikle Entities klasörü altında gerekli olan
-  klasörleri ekledik.
-  - Context'i 'DbContext'ten kalıtım alırken 'IdentityDbContext'ten kalıtım
-  alacak şekilde değiştirdik ve 'Microsoft.AspNetCore.Identity.EntityFrameworkCore;'
-  kütüphanesi yükledik.
-  - Entiy'leri 'IdentityUser<Guid>' sınıfından kalıtım aldırdık 
+ - 'MicrosoftIdentity' ile arama yapıldığında ilgili giriş sayfasına ulaşılıyor. 
+ Bu projede 'Kimlik Özelleştirme' sekmesindeki bilgileri kullandık. 
+ - Identity yapısı için öncelikle Entities klasörü altında gerekli  olan AppUser
+ gibi isimlendirdiğimiz klasörleri ekledik.
+- Context'i 'DbContext'ten kalıtım alırken, 'IdentityDbContext'ten kalıtım
+  alacak şekilde değiştirdik ve data katmanına 'Microsoft.AspNetCore.Identity.EntityFrameworkCore;'
+  6.15 versiyonulu kütüphanesni yükledik.
+- Entiy'leri 'IdentityUser<Guid>' sınıfından kalıtım aldırdık 
   'Microsoft.Extensions.Identity.Stores' kütüphanesini Data Katmanına yükledik.
+  Hata.Bu sınıfları Entity katmanına da tanımadığım için hata aldık.
+- Identity Entiy'lerinin Context içinde DbSet olarak tanımlamıyoruz.   
 16. Identity Yapısının Cooke Uyarlaması 
