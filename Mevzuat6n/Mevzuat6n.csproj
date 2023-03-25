@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Mevzuat6n.3Service\Mevzuat6n._3Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
 </Project>
