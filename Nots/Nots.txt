@@ -50,7 +50,8 @@ Not: View üzerinde yapılan değişikliklerin güncellendiğinde görülmesi i�
 ve .'AddRazorRuntimeCompilation()' şeklinde Program.cs de tanımlanması gerekir.
 
 13. 'https://themewagon.com/themes/free-responsive-bootstrap-5-html5-admin-template-sneat/'
-adresinden indirdiğimiz free tamplatein inindeki '../' yolu '~/sneat/' ile
+adresinden indirdiğimiz free tamplati açtıktan sonra klasör olarak www.root'u klasör olarak aç
+dedşkten sonra içine kopyaladık içindeki '../' yolu '~/sneat/' ile
 değiştirdik, şablondaki 'Content wrapper' bölümünü index.cshtml içine aldık.
 
 14. AutoMapper kütüphanesi,
