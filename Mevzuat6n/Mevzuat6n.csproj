@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mevzuat6n.2Data\Mevzuat6n._2Data.csproj" />
+    <ProjectReference Include="..\Mevzuat6n.3Service\Mevzuat6n._3Service.csproj" />
   </ItemGroup>
 
 </Project>

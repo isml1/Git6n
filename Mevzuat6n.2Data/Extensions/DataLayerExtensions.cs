@@ -1,6 +1,7 @@
 ﻿using Mevzuat6n._2Data.Context;
 using Mevzuat6n._2Data.Repositories.Abstractions;
 using Mevzuat6n._2Data.Repositories.Concretes;
+using Mevzuat6n._2Data.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
