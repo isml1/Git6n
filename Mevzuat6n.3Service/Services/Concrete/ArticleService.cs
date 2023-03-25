@@ -1,4 +1,6 @@
-﻿using Mevzuat6n._1Entities.Entities;
+﻿using AutoMapper;
+using Mevzuat6n._1Entities.DTOs.Articles;
+using Mevzuat6n._1Entities.Entities;
 using Mevzuat6n._2Data.UnitOfWorks;
 using Mevzuat6n._3Service.Services.Abstractions;
 using System;
@@ -13,19 +15,27 @@ namespace Mevzuat6n._3Service.Services.Concrete
     public class ArticleService : IArticleService
     {
         private readonly IUnitOfWork unitOfWork;
-        //private readonly IMapper mapper;
+        private readonly IMapper mapper;
         //private readonly IHttpContextAccessor httpContextAccessor;
         //private readonly IImageHelper imageHelper;
         //private readonly ClaimsPrincipal _user;
 
-        public ArticleService(IUnitOfWork unitOfWork /*IMapper mapper, IHttpContextAccessor httpContextAccessor, IImageHelper imageHelper*/)
+        public ArticleService(IUnitOfWork unitOfWork, IMapper mapper/*, IHttpContextAccessor httpContextAccessor, IImageHelper imageHelper*/)
         {
             this.unitOfWork = unitOfWork;
-        //    this.mapper = mapper;
-        //    this.httpContextAccessor = httpContextAccessor;
-        //    _user = httpContextAccessor.HttpContext.User;
-        //    this.imageHelper = imageHelper;
+            this.mapper = mapper;
+            //    this.httpContextAccessor = httpContextAccessor;
+            //    _user = httpContextAccessor.HttpContext.User;
+            //    this.imageHelper = imageHelper;
         }
+
+        public async Task<List<ArticleDto>> GetirAllArticlesAsync()
+        {
+            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync();;
+            var map = mapper.Map<List<ArticleDto>>(articles);
+            return map;
+        }
+
         //public async Task<ArticleListDto> GetAllByPagingAsync(Guid? categoryId, int currentPage = 1, int pageSize = 3, bool isAscending = false)
         //{
         //    pageSize = pageSize > 20 ? 20 : pageSize;
@@ -166,10 +176,5 @@ namespace Mevzuat6n._3Service.Services.Concrete
         //    };
         //}
 
-        // HATA VERDİ
-        //public async Task<List<IArticleService>> GetAllArticleAsync()
-        //{
-        //    return await unitOfWork.GetRepository<Article>().GetAllAsync();
-        //}
-    }
+    }    
 }

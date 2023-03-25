@@ -24,7 +24,7 @@ namespace Mevzuat6n._3Service.Services.Extensions
 
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            //services.AddAutoMapper(assembly);
+            services.AddAutoMapper(assembly);
 
 
             //services.AddControllersWithViews()

@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Mevzuat6n.4Core\Mevzuat6n._4Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\Categories\" />
+    <Folder Include="DTOs\Images\" />
+    <Folder Include="DTOs\Users\" />
+  </ItemGroup>
+
 </Project>

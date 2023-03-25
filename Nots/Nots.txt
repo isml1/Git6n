@@ -57,7 +57,7 @@ değiştirdik, şablondaki 'Content wrapper' bölümünü index.cshtml içine al
 14. AutoMapper kütüphanesi,
 https://www.youtube.com/watch?v=SPZaOMRrzLQ&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=10
  Entity katmanına DTOs klasörünü, içine 
-AnlasmaDto Classını ekledik. Service katmanına AutoMapper klasörünü ekledik.
+AnlasmaDto Class'ını ekledik. Service katmanına AutoMapper klasörünü,
 'AutoMapper.Extensions.Microsoft.DependencyIjection' ve 'AutoMapper' kütüphanelerini
 service katmanına ekledik.
  AutoMapper klasörü aldına 'AnlasmaProfile' class'ını açıp içini yazdıktan sonra 

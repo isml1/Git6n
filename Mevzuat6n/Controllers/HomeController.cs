@@ -1,4 +1,5 @@
-﻿using Mevzuat6n.Models;
+﻿using Mevzuat6n._3Service.Services.Abstractions;
+using Mevzuat6n.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +8,18 @@ namespace Mevzuat6n.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IArticleService _articleService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IArticleService articleService)
         {
             _logger = logger;
+            _articleService = articleService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var articles=await _articleService.GetirAllArticlesAsync();
+            return View(articles);
         }
 
         public IActionResult Privacy()

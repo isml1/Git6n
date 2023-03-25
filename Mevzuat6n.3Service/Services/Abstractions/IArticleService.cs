@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mevzuat6n._1Entities.DTOs.Articles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,8 @@ namespace Mevzuat6n._3Service.Services.Abstractions
 {
     public interface IArticleService
     {
-       // Task<List<IArticleService>> GetAllArticleAsync();
-
-
-
         //Task<List<ArticleDto>> GetAllArticlesWithCategoryNonDeletedAsync();
+        Task<List<ArticleDto>> GetirAllArticlesAsync();
         //Task<List<ArticleDto>> GetAllArticlesWithCategoryDeletedAsync();
         //Task<ArticleDto> GetArticleWithCategoryNonDeletedAsync(Guid articleId);
         //Task CreateArticleAsync(ArticleAddDto articleAddDto);
