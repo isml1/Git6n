@@ -15,8 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Mevzuat6n.1Entities\Mevzuat6n._1Entities.csproj" />
     <ProjectReference Include="..\Mevzuat6n.2Data\Mevzuat6n._2Data.csproj" />
     <ProjectReference Include="..\Mevzuat6n.3Service\Mevzuat6n._3Service.csproj" />
+    <ProjectReference Include="..\Mevzuat6n.4Core\Mevzuat6n._4Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

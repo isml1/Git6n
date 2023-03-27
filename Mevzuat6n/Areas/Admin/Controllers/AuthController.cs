@@ -1,4 +1,5 @@
-﻿using Mevzuat6n._1Entities.Entities;
+﻿using Mevzuat6n._1Entities.DTOs.Users;
+using Mevzuat6n._1Entities.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -52,13 +53,13 @@ namespace Mevzuat6n.Areas.Admin.Controllers
                 return View();
             }
         }
-        //[Authorize]
-        //[HttpGet]
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await signInManager.SignOutAsync();
-        //    return RedirectToAction("Index", "Home", new { Area = "" });
-        //}
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home", new { Area = "" });
+        }
         //[Authorize]
         //[HttpGet]
         //public async Task<IActionResult> AccessDenied()

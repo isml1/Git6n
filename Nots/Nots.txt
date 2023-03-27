@@ -51,8 +51,10 @@ ve .'AddRazorRuntimeCompilation()' şeklinde Program.cs de tanımlanması gereki
 
 13. 'https://themewagon.com/themes/free-responsive-bootstrap-5-html5-admin-template-sneat/'
 adresinden indirdiğimiz free tamplati açtıktan sonra klasör olarak www.root'u klasör olarak aç
-dedşkten sonra içine kopyaladık içindeki '../' yolu '~/sneat/' ile
-değiştirdik, şablondaki 'Content wrapper' bölümünü index.cshtml içine aldık.
+değiştirdikten sonra, _Layout.cshtml içine kopyaladık.
+_ 'data-assets-path="../assets/"' yolunu yoruma aldık. 
+ içindeki '../' yolu '~/sneat/' ile değiştirdik.
+ , şablondaki 'Content wrapper' bölümünü index.cshtml içine aldık.
 
 14. AutoMapper kütüphanesi,
 https://www.youtube.com/watch?v=SPZaOMRrzLQ&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=10
@@ -77,4 +79,34 @@ service katmanına ekledik.
   'Microsoft.Extensions.Identity.Stores' kütüphanesini Data Katmanına yükledik.
   Hata.Bu sınıfları Entity katmanına da tanımadığım için hata aldık.
 - Identity Entiy'lerinin Context içinde DbSet olarak tanımlamıyoruz.   
-16. Identity Yapısının Cooke Uyarlaması 
+
+16. Cooke bazlı Authenticatiın,
+https://www.youtube.com/watch?v=sDA30g4623U&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=12
+- Program.cs içine Identity Yapısının Cooke Uyarlaması için öncelikle
+'builder.Services.AddIdentity<AppUser, AppRole>()' servisi ve app.UseAuthorization();
+dan() dan önceki bir yerde 'app.UseAuthentication();' mideware'inin ekliyoruz.
+- Cooke eklemek için önce 'builder.Services.AddSession();' servisini ekliyoruz 
+sonra 'app.UseSession();' midleware'ini authenticationundan önce ekliyoruz.
+Daha sonra 'builder.Services.ConfigureApplicationCookie()' servisini ekleyip
+parantezler arasında configurasyon ayarlarını giriyoruz.
+
+17. Login, Logout yapısı kurmak,
+https://www.youtube.com/watch?v=5ulgNJUow1s&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=13
+- Area/Admin üzerinden başlıyoruz. HomeController'i '[Authorize]' ile işaretliyoruz.
+- Program.cs dosyasında cooke ayarlarıda login olmak isteyenlerin yönlendirileceği
+path'i belirlemiştik. Bu adrese uygun bir 'Conroller', 'View' class'ı ekledik.
+'View'i içerisine html kodlarını ekledikten sonra, 'Controller'ına [HttpGet]
+ve [HttpPost] ile Login 'Action'unu oluşturduk.
+- [HttpPost] kısmında 'userLoginDto'yu parametre olarak verdik ve girilen 
+verilerin doruluğunu kontrol eden kodları yazdık.
+- Cooke ayarlarında 'Area/Admin' seçildiğinde 'Login' controller'ına gideceğini
+söylemiştik. Ama aynı zamanda 'Area/Admin/Home' içine 'Authorize' attribut'unu 
+koyduğumuzdan 'Login' içine 'AllowAnonymus' ile işaretlememiz gerekir.    
+
+
+
+
+
+
+
+
