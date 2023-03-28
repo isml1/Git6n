@@ -18,7 +18,7 @@ namespace Mevzuat6n.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var articles=await _articleService.GetirAllArticlesAsync();
+            var articles=await _articleService.GetAllArticlesWithCategoryNonDeletedAsync();
             return View(articles);
         }
 

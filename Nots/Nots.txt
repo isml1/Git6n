@@ -101,7 +101,10 @@ ve [HttpPost] ile Login 'Action'unu oluşturduk.
 verilerin doruluğunu kontrol eden kodları yazdık.
 - Cooke ayarlarında 'Area/Admin' seçildiğinde 'Login' controller'ına gideceğini
 söylemiştik. Ama aynı zamanda 'Area/Admin/Home' içine 'Authorize' attribut'unu 
-koyduğumuzdan 'Login' içine 'AllowAnonymus' ile işaretlememiz gerekir.    
+koyduğumuzdan 'Login' içine 'AllowAnonymus' ile işaretlememiz gerekir.
+- Login sayfası ve -Layout sayfasını düzenliyoruz.
+18. Datatable ve listeleme; 
+   
 
 
 

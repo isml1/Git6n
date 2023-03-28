@@ -29,13 +29,6 @@ namespace Mevzuat6n._3Service.Services.Concrete
             //    this.imageHelper = imageHelper;
         }
 
-        public async Task<List<ArticleDto>> GetirAllArticlesAsync()
-        {
-            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync();;
-            var map = mapper.Map<List<ArticleDto>>(articles);
-            return map;
-        }
-
         //public async Task<ArticleListDto> GetAllByPagingAsync(Guid? categoryId, int currentPage = 1, int pageSize = 3, bool isAscending = false)
         //{
         //    pageSize = pageSize > 20 ? 20 : pageSize;
@@ -73,14 +66,14 @@ namespace Mevzuat6n._3Service.Services.Concrete
         //    await unitOfWork.SaveAsync();
         //}
 
-        //public async Task<List<ArticleDto>> GetAllArticlesWithCategoryNonDeletedAsync()
-        //{
+        public async Task<List<ArticleDto>> GetAllArticlesWithCategoryNonDeletedAsync()
+        {
 
-        //    var articles = await unitOfWork.GetRepository<Article>().GetAllAsync(x => !x.IsDeleted, x => x.Category);
-        //    var map = mapper.Map<List<ArticleDto>>(articles);
+            var articles = await unitOfWork.GetRepository<Article>().GetAllAsync(x => !x.IsDeleted, x => x.Category);
+            var map = mapper.Map<List<ArticleDto>>(articles);
 
-        //    return map;
-        //}
+            return map;
+        }
         //public async Task<ArticleDto> GetArticleWithCategoryNonDeletedAsync(Guid articleId)
         //{
 
