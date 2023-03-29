@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Mevzuat6n._3Service.FluentValidations;
 using System.Globalization;
+using Microsoft.AspNetCore.Http;
 
 namespace Mevzuat6n._3Service.Services.Extensions
 {
@@ -20,7 +21,7 @@ namespace Mevzuat6n._3Service.Services.Extensions
             //services.AddScoped<IImageHelper, ImageHelper>();
             //services.AddScoped<IDashbordService, DashboardService>();
 
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddAutoMapper(assembly);
 

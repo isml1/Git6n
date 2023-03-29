@@ -10,7 +10,6 @@ namespace Mevzuat6n._3Service.Services.Abstractions
     public interface IArticleService
     {
         Task<List<ArticleDto>> GetAllArticlesWithCategoryNonDeletedAsync();
-        Task<List<ArticleDto>> GetirAllArticlesAsync();
         Task<List<ArticleDto>> GetAllArticlesWithCategoryDeletedAsync();
         Task<ArticleDto> GetArticleWithCategoryNonDeletedAsync(Guid articleId);
         Task CreateArticleAsync(ArticleAddDto articleAddDto);
