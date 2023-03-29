@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Mevzuat6n._1Entities.DTOs.Articles;
 using Mevzuat6n._1Entities.Entities;
 using Mevzuat6n._3Service.Services.Abstractions;

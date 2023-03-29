@@ -6,6 +6,7 @@ using System.Reflection;
 using Mevzuat6n._3Service.FluentValidations;
 using System.Globalization;
 using Microsoft.AspNetCore.Http;
+using Mevzuat6n._3Service.Helpers.Images;
 
 namespace Mevzuat6n._3Service.Services.Extensions
 {
@@ -17,9 +18,9 @@ namespace Mevzuat6n._3Service.Services.Extensions
 
             services.AddScoped<IArticleService, ArticleService>();
             services.AddScoped<ICategoryService, CategoryService>();
-            //services.AddScoped<IUserService, UserService>();
-            //services.AddScoped<IImageHelper, ImageHelper>();
-            //services.AddScoped<IDashbordService, DashboardService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IImageHelper, ImageHelper>();
+            services.AddScoped<IDashbordService, DashboardService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
