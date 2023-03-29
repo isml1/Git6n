@@ -112,7 +112,6 @@ namespace Mevzuat6n._3Service.Helpers.Images
             var fileToDelete = Path.Combine($"{wwwroot}/{imgFolder}/{imageName}");
             if (File.Exists(fileToDelete))
                 File.Delete(fileToDelete);
-
         }
     }
 }
