@@ -49,22 +49,22 @@ namespace Mevzuat6n._3Service.Services.Concrete
         //        IsAscending = isAscending
         //    };
         //}
-        //public async Task CreateArticleAsync(ArticleAddDto articleAddDto)
-        //{
+        public async Task CreateArticleAsync(ArticleAddDto articleAddDto)
+        {
 
-        //    var userId = _user.GetLoggedInUserId();
-        //    var userEmail = _user.GetLoggedInEmail();
+            //var userId = _user.GetLoggedInUserId();
+            //var userEmail = _user.GetLoggedInEmail();
 
-        //    var imageUpload = await imageHelper.Upload(articleAddDto.Title, articleAddDto.Photo, ImageType.Post);
-        //    Image image = new(imageUpload.FullName, articleAddDto.Photo.ContentType, userEmail);
-        //    await unitOfWork.GetRepository<Image>().AddAsync(image);
+            //var imageUpload = await imageHelper.Upload(articleAddDto.Title, articleAddDto.Photo, ImageType.Post);
+            //Image image = new(imageUpload.FullName, articleAddDto.Photo.ContentType, userEmail);
+            //await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-        //    var article = new Article(articleAddDto.Title, articleAddDto.Content, userId, userEmail, articleAddDto.CategoryId, image.Id);
+            var article = new Article(articleAddDto.Title, articleAddDto.Content, userId, userEmail, articleAddDto.CategoryId, image.Id);
 
 
-        //    await unitOfWork.GetRepository<Article>().AddAsync(article);
-        //    await unitOfWork.SaveAsync();
-        //}
+            await unitOfWork.GetRepository<Article>().AddAsync(article);
+            await unitOfWork.SaveAsync();
+        }
 
         public async Task<List<ArticleDto>> GetAllArticlesWithCategoryNonDeletedAsync()
         {
@@ -74,58 +74,61 @@ namespace Mevzuat6n._3Service.Services.Concrete
 
             return map;
         }
-        //public async Task<ArticleDto> GetArticleWithCategoryNonDeletedAsync(Guid articleId)
-        //{
+        public async Task<ArticleDto> GetArticleWithCategoryNonDeletedAsync(Guid articleId)
+        {
+            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleId, x => x.Category, i => i.Image, u => u.User);
+            var map = mapper.Map<ArticleDto>(article);
 
-        //    var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleId, x => x.Category, i => i.Image, u => u.User);
-        //    var map = mapper.Map<ArticleDto>(article);
+            return map;
+        }
+        public async Task<string> UpdateArticleAsync(ArticleUpdateDto articleUpdateDto)
+        {
+            var userEmail = _user.GetLoggedInEmail();
+            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleUpdateDto.Id, x => x.Category, i => i.Image);
 
-        //    return map;
-        //}
-        //public async Task<string> UpdateArticleAsync(ArticleUpdateDto articleUpdateDto)
-        //{
-        //    var userEmail = _user.GetLoggedInEmail();
-        //    var article = await unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleUpdateDto.Id, x => x.Category, i => i.Image);
+            if (articleUpdateDto.Photo != null)
+            {
+                imageHelper.Delete(article.Image.FileName);
 
-        //    if (articleUpdateDto.Photo != null)
-        //    {
-        //        imageHelper.Delete(article.Image.FileName);
+                var imageUpload = await imageHelper.Upload(articleUpdateDto.Title, articleUpdateDto.Photo, ImageType.Post);
+                Image image = new(imageUpload.FullName, articleUpdateDto.Photo.ContentType, userEmail);
+                await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-        //        var imageUpload = await imageHelper.Upload(articleUpdateDto.Title, articleUpdateDto.Photo, ImageType.Post);
-        //        Image image = new(imageUpload.FullName, articleUpdateDto.Photo.ContentType, userEmail);
-        //        await unitOfWork.GetRepository<Image>().AddAsync(image);
+                article.ImageId = image.Id;
 
-        //        article.ImageId = image.Id;
+            }
 
-        //    }
+            mapper.Map(articleUpdateDto, article);
+            article.Title = articleUpdateDto.Title;
+            article.Content = articleUpdateDto.Content;
+            article.CategoryId = articleUpdateDto.CategoryId;
+            article.ModifiedDate = DateTime.Now;
+            article.ModifiedBy = userEmail;
 
-        //    mapper.Map(articleUpdateDto, article);
-        //    //article.Title = articleUpdateDto.Title;
-        //    //article.Content = articleUpdateDto.Content;
-        //    //article.CategoryId = articleUpdateDto.CategoryId;
-        //    article.ModifiedDate = DateTime.Now;
-        //    article.ModifiedBy = userEmail;
+            await unitOfWork.GetRepository<Article>().UpdateAsync(article);
+            await unitOfWork.SaveAsync();
 
-        //    await unitOfWork.GetRepository<Article>().UpdateAsync(article);
-        //    await unitOfWork.SaveAsync();
+            return article.Title;
 
-        //    return article.Title;
+        }
 
-        //}
-        //public async Task<string> SafeDeleteArticleAsync(Guid articleId)
-        //{
-        //    var userEmail = _user.GetLoggedInEmail();
-        //    var article = await unitOfWork.GetRepository<Article>().GetByGuidAsync(articleId);
 
-        //    article.IsDeleted = true;
-        //    article.DeletedDate = DateTime.Now;
-        //    article.DeletedBy = userEmail;
 
-        //    await unitOfWork.GetRepository<Article>().UpdateAsync(article);
-        //    await unitOfWork.SaveAsync();
 
-        //    return article.Title;
-        //}
+        public async Task<string> SafeDeleteArticleAsync(Guid articleId)
+        {
+            var userEmail = _user.GetLoggedInEmail();
+            var article = await unitOfWork.GetRepository<Article>().GetByGuidAsync(articleId);
+
+            article.IsDeleted = true;
+            article.DeletedDate = DateTime.Now;
+            article.DeletedBy = userEmail;
+
+            await unitOfWork.GetRepository<Article>().UpdateAsync(article);
+            await unitOfWork.SaveAsync();
+
+            return article.Title;
+        }
 
         //public async Task<List<ArticleDto>> GetAllArticlesWithCategoryDeletedAsync()
         //{

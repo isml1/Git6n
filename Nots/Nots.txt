@@ -43,20 +43,20 @@ Oluşturup, içene methodlar yazdık. Çalıştırdığımızda bu katmanda bir
 'loadServiceLayerExtension' yazdık. Bu servisi Program.cs dosyasına 
 'builder.Services.loadServiceLayerExtension();' şeklinde tanımladık.
 
-12. Area oluşturmak için, Program.cs içindeki 'MapAreaControllerRoute' yapısını
+10. Area oluşturmak için, Program.cs içindeki 'MapAreaControllerRoute' yapısını
 değiştirdik. Klasörleri oluşturduk. denemesini yaptık. 
 Not: View üzerinde yapılan değişikliklerin güncellendiğinde görülmesi için
 'Microsoft.AspNetCore.Mvc.Razor.RunTimeCompilation' paketinin yüklenmesi
 ve .'AddRazorRuntimeCompilation()' şeklinde Program.cs de tanımlanması gerekir.
 
-13. 'https://themewagon.com/themes/free-responsive-bootstrap-5-html5-admin-template-sneat/'
+11. 'https://themewagon.com/themes/free-responsive-bootstrap-5-html5-admin-template-sneat/'
 adresinden indirdiğimiz free tamplati açtıktan sonra klasör olarak www.root'u klasör olarak aç
 değiştirdikten sonra, _Layout.cshtml içine kopyaladık.
 _ 'data-assets-path="../assets/"' yolunu yoruma aldık. 
  içindeki '../' yolu '~/sneat/' ile değiştirdik.
  , şablondaki 'Content wrapper' bölümünü index.cshtml içine aldık.
 
-14. AutoMapper kütüphanesi,
+12. AutoMapper kütüphanesi,
 https://www.youtube.com/watch?v=SPZaOMRrzLQ&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=10
  Entity katmanına DTOs klasörünü, içine 
 ArticleDto Class'ını ekledik. Service katdemanına AutoMapper klasörünü,
@@ -80,7 +80,7 @@ service katmanına ekledik.
   Hata.Bu sınıfları Entity katmanına da tanımadığım için hata aldık.
 - Identity Entiy'lerinin Context içinde DbSet olarak tanımlamıyoruz.   
 
-16. Cooke bazlı Authenticatiın,
+13. Cooke bazlı Authenticatiın,
 https://www.youtube.com/watch?v=sDA30g4623U&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=12
 - Program.cs içine Identity Yapısının Cooke Uyarlaması için öncelikle
 'builder.Services.AddIdentity<AppUser, AppRole>()' servisi ve app.UseAuthorization();
@@ -90,7 +90,7 @@ sonra 'app.UseSession();' midleware'ini authenticationundan önce ekliyoruz.
 Daha sonra 'builder.Services.ConfigureApplicationCookie()' servisini ekleyip
 parantezler arasında configurasyon ayarlarını giriyoruz.
 
-17. Login, Logout yapısı kurmak,
+14. Login, Logout yapısı kurmak,
 https://www.youtube.com/watch?v=5ulgNJUow1s&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=13
 - Area/Admin üzerinden başlıyoruz. HomeController'i '[Authorize]' ile işaretliyoruz.
 - Program.cs dosyasında cooke ayarlarıda login olmak isteyenlerin yönlendirileceği
@@ -103,8 +103,64 @@ verilerin doruluğunu kontrol eden kodları yazdık.
 söylemiştik. Ama aynı zamanda 'Area/Admin/Home' içine 'Authorize' attribut'unu 
 koyduğumuzdan 'Login' içine 'AllowAnonymus' ile işaretlememiz gerekir.
 - Login sayfası ve -Layout sayfasını düzenliyoruz.
-18. Datatable ve listeleme; 
-   
+
+15. Datatable ve listeleme; 
+Arama, filitreleme ve sayfalamayı görebileceğimiz bir yapıdır.
+https://www.youtube.com/watch?v=f1qDPI4m5-A&list=PLrSCwxkucNmxFrrAsGm14Z-5Cu52MKrNr&index=16&t=39s
+_ Datatable'ın Css ve Js dosyaları için kullanılan CDN listesi:
+
+Layout'ta cssler kısmına ekleyeceğimiz cdn;
+https://cdn.datatables.net/1.10.21/cs...
+
+Js'leri eklediğimiz kısıma eklenecek olan cdn;
+https://cdn.datatables.net/1.10.21/js...
+https://cdn.datatables.net/1.10.21/js...
+https://cdn.datatables.net/buttons/1....
+
+indexArticle.js'de yazdığımız Türkçeleştirme kodumuz;
+https://drive.google.com/file/d/1qpQF...
+
+Refactoring ile sabit dosya yapılmasını bekliyoruz.
+
+_ Area/Admin üzerinde 'ArticleController', 'Index' oluşturuldu.Sneat üzerinden 'BasicTable'
+kodları alındı, Index içine eklendi ve düzenlendi.
+_ DataTable'ı Türkçe'leştirmek için 'js' klasörüne 'articleIndex.js' isminde 
+bir dosya ve içeriğini ekledik. Bu dosyayı Article/Index'e '@section Scripts{}' yapısıyla tanıttık.
+Layout kısmında da bu script'in ekleme işlemini '@await RenderSectionAsync("Scripts",false);' ile tanımladık
+
+_ ArticleDto, CtagoryDto , ArticleMap ve CategoryMap sınıflarını oluşturup, 
+Index'e model üzerinden göndereceğimiz alanları belirleyip Index'i bu 
+verilere göre şekillendirdik.
+
+Not: Model'de hata verirse, ilgili Controller'de veri yok veya yanlış veri var demektir. 
+Bağlı tabloya ilişkin bir hata veriyorsa ınclude hatası var demektir.
+
+_ Verileri Index'e model üzerinden gönderirken Repository içinde yazılan 
+sorgunun içinde ilişkili tablolardan veri alınamasına uygun bir sorgu vardı.
+
+_ IArticleService, ArticleService, ve controller'lardaki methodları düzenledik.
+AutoMapper içine CategoryDto'nun Category' çevirileceğini bilgisini vermek üzere
+CategoryProfile sınıfını oluşturduk.
+
+16. Makale Ekleme işlemi,
+
+_ ArticleAdd Action'nunu, View'ini oluşturduk ve içeriğini düzenledik. 
+Index üzerindeki butona 'asp-area="Admin" asp-controller="Article" asp-action="Add"' yapısı ile
+yazarak click sonrası verinin doğrudan gideceği controller ve action belirlenmiş oldu.
+_ ArticleAddDto, CategoryService ve ICategoryService sınıflarını oluşturduk.
+'LoadServiceLayerExtension' içinde IoC'ye servisi ekledik. ArticleController
+içinden servisi istedik. 42:22  
+_ 
+
+
+
+
+
+
+
+
+
+
 
 
 
