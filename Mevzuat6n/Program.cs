@@ -1,6 +1,7 @@
 using Mevzuat6n._1Entities.Entities;
 using Mevzuat6n._2Data.Context;
 using Mevzuat6n._2Data.Extensions;
+using Mevzuat6n._3Service.Describers;
 using Mevzuat6n._3Service.Services.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -33,7 +34,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(opt =>
     opt.Password.RequireUppercase = false;
 })
     .AddRoleManager<RoleManager<AppRole>>()
-    //.AddErrorDescriber<CustomIdentityErrorDescriber>()
+    .AddErrorDescriber<CustomIdentityErrorDescriber>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 

@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Mevzuat6n.2Data\Mevzuat6n._2Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="AutoMapper\Users\" />
-  </ItemGroup>
-
 </Project>
