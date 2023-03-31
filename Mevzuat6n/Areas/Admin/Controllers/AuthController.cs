@@ -60,11 +60,11 @@ namespace Mevzuat6n.Areas.Admin.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
-        //[Authorize]
-        //[HttpGet]
-        //public async Task<IActionResult> AccessDenied()
-        //{
-        //    return View();
-        //}
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> AccessDenied()
+        {
+            return View();
+        }
     }
 }
