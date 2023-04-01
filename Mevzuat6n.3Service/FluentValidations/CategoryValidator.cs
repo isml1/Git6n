@@ -15,8 +15,8 @@ namespace Mevzuat6n._3Service.FluentValidations
             RuleFor(c => c.Name)
                 .NotEmpty()
                 .NotNull()
-                //.MinimumLength(3)
-                //.MaximumLength(100)
+                .MinimumLength(3)
+                .MaximumLength(100)
                 .WithName("Kategori Adı");
         }
     }

@@ -15,15 +15,15 @@ namespace Mevzuat6n._3Service.FluentValidations
             RuleFor(x => x.Title)
                 .NotEmpty() 
                 .NotNull()
-                //.MinimumLength(3)
-                //.MaximumLength(550)
+                .MinimumLength(3)
+                .MaximumLength(550)
                 .WithName("Başlık");
 
             RuleFor(x => x.Content)
                 .NotEmpty()
                 .NotNull()
-                //.MinimumLength(3)
-                //.MaximumLength(550)
+                .MinimumLength(3)
+                .MaximumLength(550)
                 .WithName("İçerik");
         }
     }

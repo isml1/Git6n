@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Mevzuat6n._1Entities.DTOs.Users;
 using Mevzuat6n._1Entities.Entities;
+using Mevzuat6n._3Service.Services.Abstractions;
+using Mevzuat6n._3Service.Services.Extensions;
 using Mevzuat6n.ResultMessages;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
+
+
 
 namespace Mevzuat6n.Areas.Admin.Controllers
 {
@@ -135,7 +138,6 @@ namespace Mevzuat6n.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Profile(UserProfileDto userProfileDto)
         {
-
             if (ModelState.IsValid)
             {
                 var result = await userService.UserProfileUpdateAsync(userProfileDto);
