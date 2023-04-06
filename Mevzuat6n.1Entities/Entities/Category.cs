@@ -19,6 +19,10 @@ namespace Mevzuat6n._1Entities.Entities
             CreatedBy = createdBy;
         }
         public string? Name { get; set; }
+        public string? Subject { get; set; }
+        public string? KeyWords { get; set; }
+        public string? KeyStady { get; set; }
+        public string? Description { get; set; } = null;
         public ICollection<Article>? Articles { get; set; }
     }
 }
