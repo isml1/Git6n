@@ -1,5 +1,4 @@
-﻿@{
-}
+﻿
 @model ArticleDto
 
 
@@ -18,7 +17,7 @@
                                 <div class="down-content">
                                     <a href="#"><h4>@Model.Title</h4></a>
                                     <ul class="post-info">
-                                        <li>@Model.User.FirstName @Model.User.LastName</li>
+                                        <li>@Model.User.FirstName @Model.User.LastName</li>                                       
                                         <li>@Model.CreatedDate.ToString("dd/MM/yyyy")</li>
                                         <li><i class="fa-solid fa-eye"></i> @Model.ViewCount</li>
                                     </ul>

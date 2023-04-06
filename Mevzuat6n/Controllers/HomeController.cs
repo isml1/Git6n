@@ -47,7 +47,7 @@ namespace Mevzuat6n.Controllers
         public async Task<IActionResult> Detail(Guid id)
         {
             var ipAddress = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
-            var articeVisitors = await unitOfWork.GetRepository<ArticleVisitor>().GetAllAsync(null, x => x.Visitor, y => y.Article);
+            var articleVisitors = await unitOfWork.GetRepository<ArticleVisitor>().GetAllAsync(null, x => x.Visitor, y => y.Article);
             var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.Id == id);
 
             var result = await articleService.GetArticleWithCategoryNonDeletedAsync(id);
@@ -56,7 +56,7 @@ namespace Mevzuat6n.Controllers
 
             var addArticleVisitors = new ArticleVisitor(article.Id, visitor.Id);
 
-            if (articeVisitors.Any(x => x.VisitorId == addArticleVisitors.VisitorId && x.ArticleId == addArticleVisitors.ArticleId))
+            if (articleVisitors.Any(x => x.VisitorId == addArticleVisitors.VisitorId && x.ArticleId == addArticleVisitors.ArticleId))
                 return View(result);
             else
             {

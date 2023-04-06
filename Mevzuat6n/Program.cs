@@ -3,8 +3,8 @@ using Mevzuat6n._2Data.Context;
 using Mevzuat6n._2Data.Extensions;
 using Mevzuat6n._3Service.Describers;
 using Mevzuat6n._3Service.Services.Extensions;
+using Mevzuat6n.Filters.ArticleVisitors;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using NToastNotify;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +17,7 @@ builder.Services.AddSession();
 
 builder.Services.AddControllersWithViews(opt =>
 {
-   // opt.Filters.Add<ArticleVisitorFilter>();
+    opt.Filters.Add<ArticleVisitorFilter>();
 })
     .AddNToastNotifyToastr(new ToastrOptions()
     {

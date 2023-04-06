@@ -149,12 +149,15 @@ Index üzerindeki butona 'asp-area="Admin" asp-controller="Article" asp-action="
 yazarak click sonrası verinin doğrudan gideceği controller ve action belirlenmiş oldu.
 _ ArticleAddDto, CategoryService ve ICategoryService sınıflarını oluşturduk.
 'LoadServiceLayerExtension' içinde IoC'ye servisi ekledik. ArticleController
-içinden servisi istedik. 42:22  
-_ 
+içinden servisi istedik. 
+_ ArticleService içnde ekleme kodları yazıldı. 
 
+17. Makale Güncelleme işlemi,
 
+_ ArticleUpdateDto oluşturduk, ArticleProfile içinde mapledik,  
+ Action'nunu, View'ini oluşturduk ve içeriğini düzenledik. 
 
-
+18. SafeDelete İşlemleri
 
 
 

@@ -1,4 +1,4 @@
-﻿using Mevzuat6n._1Entities.Entities.YoutubeBlog.Entity.Entities;
+﻿using Mevzuat6n._1Entities.Entities;
 using Mevzuat6n._4Core.Core.Entities;
 using System;
 using System.Collections.Generic;

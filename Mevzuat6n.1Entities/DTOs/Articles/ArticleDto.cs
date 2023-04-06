@@ -1,4 +1,5 @@
 ﻿using Mevzuat6n._1Entities.DTOs.Categories;
+using Mevzuat6n._1Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace Mevzuat6n._1Entities.DTOs.Articles
         public string Content { get; set; }
         public CategoryDto Category { get; set; }
         public DateTime CreatedDate { get; set; }
-       // public Image Image { get; set; }
-       // public AppUser User { get; set; }
+        public Image Image { get; set; }
+        public AppUser User { get; set; }
         public string CreatedBy { get; set; }
         public bool IsDeleted { get; set; }
         public int ViewCount { get; set; }
