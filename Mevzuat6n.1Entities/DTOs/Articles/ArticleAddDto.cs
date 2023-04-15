@@ -24,14 +24,14 @@ namespace Mevzuat6n._1Entities.DTOs.Articles
         public virtual string? DeletedBy { get; set; }
         public virtual DateTime? ModifiedDate { get; set; }
         public virtual DateTime? DeletedDate { get; set; }
-        public int? MevzuatNo { get; set; }
+        public int MevzuatNo { get; set; }
         public string? MevzuatTipi { get; set; }
         public string? About { get; set; }
-        public int? VersionNo { get; set; }
-        public int? RgSayi { get; set; }
-        public DateTime? RgTarihi { get; set; }
-        public DateTime? YururlukTarihi { get; set; }
-        public DateTime? SonlanmaTarihi { get; set; }
+        public int VersionNo { get; set; }
+        public int RgSayi { get; set; }
+        public DateTime RgTarihi { get; set; }
+        public DateTime YururlukTarihi { get; set; }
+        public DateTime SonlanmaTarihi { get; set; }
         public Guid CategoryId { get; set; }
 
         public IFormFile Photo { get; set; }

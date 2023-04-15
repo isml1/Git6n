@@ -1,37 +1,101 @@
 ﻿@model ArticleAddDto
+
+@*<script src="~ /ckeditor/ckeditor.js"></script>*@
+<script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+
+
 <div class="container-xxl flex-grow-1 container-p-y">
-
-
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Makale Yönetimi /</span> Makale Ekle
+        <span class="text-muted fw-light">Mevzuat Yönetimi /</span>Belge Ekleme
     </h4>
-
     <div class="row">
         <div class="col-md-12">
-            <div class="card mb-4">
-                <h5 class="card-header"></h5>
+            <div class="card mb-1">               
                 <form asp-controller="Article" asp-action="Add" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly"></div>
                     <div class="card-body">
+                        <strong>KATEGORİSİ</strong>
                         <div class="form-group">
-                            <label asp-for="CategoryId">Kategori</label>
-
-                            <a class="btn text-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                                Ekle <i class="bx bx-plus"></i>
-                            </a>
-
+                            <label asp-for="CategoryId">MEVZUAT TÜRÜ - REJİM - İŞLEM</label>
+                            @*<a class="btn btn-text float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Ekle <i class="bx bx-plus"></i></a>*@
                             <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryId">KONU</label>
+                           @* <a class="btn btn-text float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Ekle <i class="bx bx-plus"></i></a>*@
+                            <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Subject"))"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryId">BAŞLIK</label>
+                           @* <a class="btn btn-text float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Ekle <i class="bx bx-plus"></i></a>*@
+                            <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","KeyWords"))"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryId">UYGULANMA ALANI</label>
+                            @*<a class="btn btn-text float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Ekle <i class="bx bx-plus"></i></a>*@
+                            <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","KeyStady"))"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CategoryId">AÇIKLAMA</label>
+                            @*<a class="btn btn-text float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Ekle <i class="bx bx-plus"></i></a>*@
+                            <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Description"))"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <strong>METİN EKLEME</strong>
 
+                        <div class="form-group">
+                            <label asp-for="MevzuatTipi" id="defaultFormControlInput" class="form-label">Mevzuat Türü</label>
+                            <input asp-for="MevzuatTipi" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="Content" class="text-danger"></span>*@
                         </div>
                         <div class="form-group">
-                            <label asp-for="Title" id="defaultFormControlInput" class="form-label">Başlık</label>
-                            <input asp-for="Title" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
-                            <span asp-validation-for="Title" class="text-danger"></span>
+                            <label asp-for="About" id="defaultFormControlInput" class="form-label">Alt Başlık</label>
+                            <input asp-for="About" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="About" class="text-danger"></span>*@
                         </div>
                         <div class="form-group">
-                            <label asp-for="Content" for="defaultFormControlInput" class="form-label">İçerik</label>
-                            <textarea asp-for="Content" type="text" class="form-control mb-3" id="defaultFormControlInput" style="min-height:300px;" placeholder="İçerik" aria-describedby="defaultFormControlHelp"></textarea>
+                            <label asp-for="RgSayi" id="defaultFormControlInput" class="form-label">RG Sayısı</label>
+                            <input asp-for="RgSayi" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="RgSayi" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RgTarihi" id="defaultFormControlInput" class="form-label">RG Tarihi</label>
+                            <input asp-for="RgTarihi" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="RgTarihi" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="YururlukTarihi" id="defaultFormControlInput" class="form-label">Yürürlük Tarihi</label>
+                            <input asp-for="YururlukTarihi" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="YururlukTarihi" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SonlanmaTarihi" id="defaultFormControlInput" class="form-label">Sonlanma Tarihi</label>
+                            <input asp-for="SonlanmaTarihi" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="SonlanmaTarihi" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="VersionNo" id="defaultFormControlInput" class="form-label">Versiyon Sayısı</label>
+                            <input asp-for="VersionNo" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Versiyon Sayısı" aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="VersionNo" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="MevzuatNo" id="defaultFormControlInput" class="form-label">Mevzuat No</label>
+                            <input asp-for="MevzuatNo" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Mevzuat No" aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="MevzuatNo" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Title" id="defaultFormControlInput" class="form-label">Mevzuatın Adı</label>
+                            <input asp-for="Title" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Mevzuatın Adı" aria-describedby="defaultFormControlHelp">
+                            @*<span asp-validation-for="Title" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Content" for="defaultFormControlInput" class="form-label">Mevzuat Metni</label>
+                            <textarea asp-for="Content" type="text" class="form-control mb-3" id="editor" style="min-height:300px;" placeholder="Mevzuat Metni" aria-describedby="defaultFormControlHelp"></textarea>
                             <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -39,8 +103,6 @@
                             <input asp-for="Photo" type="file" accept="image/*" class="form-control mb-3" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Photo" class="text-danger"></span>
                         </div>
-
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
                         </div>
@@ -49,8 +111,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 
@@ -81,7 +141,6 @@
 
 @section Scripts
     {
-
     <script src="~/js/categoryAdd.js"></script>
     <script>
         var app = app || {};
@@ -90,5 +149,24 @@
         app.Urls.categoryAddUrl = "@(Url.Action("AddWithAjax", "Category"))";
         app.Urls.articleAddUrl = "@(Url.Action("Add", "Article"))";
     </script>
-
 }
+
+@*<script>
+    ClassicEditor
+        .create( document.querySelector( '#ckeditor' ), {
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(err => {
+            console.error(err.stack);
+        });  
+</script>*@
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+

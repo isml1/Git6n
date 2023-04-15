@@ -49,7 +49,7 @@ namespace Mevzuat6n._3Service.Services.Concrete
         {
             var userEmail = _user.GetLoggedInEmail();
 
-            Category category = new(categoryAddDto.Name, userEmail);
+            Category category = new(categoryAddDto.Name, categoryAddDto.Subject, categoryAddDto.KeyWords, categoryAddDto.KeyStady, categoryAddDto.Description, userEmail);
             await unitOfWork.GetRepository<Category>().AddAsync(category);
             await unitOfWork.SaveAsync();
 

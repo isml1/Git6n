@@ -15,11 +15,30 @@
                     <div class="card-body">
                         <input type="hidden" asp-for="Id" />
                         <div class="form-group">
-                            <label asp-for="Name" id="defaultFormControlInput" class="form-label">Kategori ismi</label>
-                            <input asp-for="Name" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen kategori ismini giriniz." aria-describedby="defaultFormControlHelp">
+                            <label asp-for="Name" id="defaultFormControlInput" class="form-label">Mevzuat Türü - Rejim - İşlem</label>
+                            <input asp-for="Name" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Mevzuat türü" aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
-
+                        <div class="form-group">
+                            <label asp-for="Subject" id="defaultFormControlInput" class="form-label">Konu</label>
+                            <input asp-for="Subject" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Konu" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="KeyWords" id="defaultFormControlInput" class="form-label">Alt başlık</label>
+                            <input asp-for="KeyWords" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Alt başlık" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="KeyWords" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="KeyStady" id="defaultFormControlInput" class="form-label">Uygulanma alanı</label>
+                            <input asp-for="KeyStady" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Uygulanma alanı" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="KeyStady" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" id="defaultFormControlInput" class="form-label">Açıklama</label>
+                            <input asp-for="Description" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Açıklama" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Kaydet</button>

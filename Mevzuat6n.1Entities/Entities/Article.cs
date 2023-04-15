@@ -13,8 +13,16 @@ namespace Mevzuat6n._1Entities.Entities
         {
 
         }
-        public Article(string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId)
+        public Article(int mevzuatno, string mevzuattipi, string about, int versionno, int rgsayi, DateTime rgtarihi, DateTime yururluktarihi, DateTime sonlanmatarihi, string title, string content, Guid userId, string createdBy, Guid categoryId, Guid imageId)
         {
+            MevzuatNo = mevzuatno;
+            MevzuatTipi = mevzuattipi;
+            About = about;
+            VersionNo = versionno;
+            RgSayi = rgsayi;
+            RgTarihi = rgtarihi;
+            YururlukTarihi = yururluktarihi;
+            SonlanmaTarihi = sonlanmatarihi;
             Title = title;
             Content = content;
             UserId = userId;
