@@ -16,27 +16,39 @@
             <table class="table table-bordered" id="categoriesTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>İsim</th>
+                        <th>Rejim / İşlem</th>
+                        <th>Konu</th>
+                        <th>Başlık</th>
+                        <th>Uygulanma Alanı</th>
+                        <th>Açıklama</th>
                         <th>Oluşturulma Tarihi</th>
                         <th>Oluşturan</th>
                         <th>Durum</th>
                         <th>İşlemler</th>
                     </tr>
                 </thead>
-                <tfoot>
+@*                <tfoot>
                     <tr>
-                        <th>İsim</th>
+                        <th>Rejim / İşlem</th>
+                        <th>Konu</th>
+                        <th>Başlık</th>
+                        <th>Uygulanma Alanı</th>
+                        <th>Açıklama</th>
                         <th>Oluşturulma Tarihi</th>
                         <th>Oluşturan</th>
                         <th>Durum</th>
                         <th>İşlemler</th>
                     </tr>
-                </tfoot>
+                </tfoot>*@
                 <tbody class="table-border-bottom-0">
                     @foreach (var category in Model)
                     {
                         <tr name="@category.Id">
                             <td>@category.Name</td>
+                            <td>@category.Subject</td>
+                            <td>@category.KeyWords</td>
+                            <td>@category.KeyStady</td>
+                            <td>@category.Description</td>
                             <td>@category.CreatedDate.ToShortDateString()</td>
                             <td>@category.CreatedBy</td>
                             <td>@(category.IsDeleted ? "Aktif Değil" : "Aktif")</td>
@@ -50,6 +62,7 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 </div>
 

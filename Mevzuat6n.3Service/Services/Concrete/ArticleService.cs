@@ -63,7 +63,8 @@ namespace Mevzuat6n._3Service.Services.Concrete
             Image image = new(imageUpload.FullName, articleAddDto.Photo.ContentType, userEmail);
             await unitOfWork.GetRepository<Image>().AddAsync(image);
 
-            var article = new Article(articleAddDto.Title, articleAddDto.Content, userId, userEmail, articleAddDto.CategoryId, image.Id);
+            var article = new Article(articleAddDto.MevzuatNo, articleAddDto.MevzuatTipi, articleAddDto.About, articleAddDto.VersionNo, articleAddDto.RgSayi, articleAddDto.RgTarihi, articleAddDto.YururlukTarihi,
+                articleAddDto.SonlanmaTarihi, articleAddDto.Title, articleAddDto.Content, userId, userEmail, articleAddDto.CategoryId, image.Id);
 
 
             await unitOfWork.GetRepository<Article>().AddAsync(article);

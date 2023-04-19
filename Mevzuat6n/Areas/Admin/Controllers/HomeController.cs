@@ -13,64 +13,37 @@ namespace Mevzuat6n.Areas.Admin.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IArticleService articleService;
-        private readonly IHttpContextAccessor httpContextAccessor;
-        private readonly IUnitOfWork unitOfWork;
+        private readonly IDashbordService dashbordService;
 
-        public HomeController(ILogger<HomeController> logger, IArticleService articleService, IHttpContextAccessor httpContextAccessor, IUnitOfWork unitOfWork)
+        public HomeController(IArticleService articleService, IDashbordService dashbordService)
         {
-            _logger = logger;
             this.articleService = articleService;
-            this.httpContextAccessor = httpContextAccessor;
-            this.unitOfWork = unitOfWork;
+            this.dashbordService = dashbordService;
         }
-        [HttpGet]
-        public async Task<IActionResult> Index(Guid? categoryId, int currentPage = 1, int pageSize = 3, bool isAscending = false)
+        public async Task<IActionResult> Index()
         {
-            var articles = await articleService.GetAllByPagingAsync(categoryId, currentPage, pageSize, isAscending);
+            var articles = await articleService.GetAllArticlesWithCategoryNonDeletedAsync();
+
             return View(articles);
         }
         [HttpGet]
-        public async Task<IActionResult> Search(string keyword, int currentPage = 1, int pageSize = 3, bool isAscending = false)
+        public async Task<IActionResult> YearlyArticleCounts()
         {
-            var articles = await articleService.SearchAsync(keyword, currentPage, pageSize, isAscending);
-            return View(articles);
+            var count = await dashbordService.GetYearlyArticleCounts();
+            return Json(JsonConvert.SerializeObject(count));
         }
-
-        public IActionResult Privacy()
+        [HttpGet]
+        public async Task<IActionResult> TotalArticleCount()
         {
-            return View();
+            var count = await dashbordService.GetTotalArticleCount();
+            return Json(count);
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet]
+        public async Task<IActionResult> TotalCategoryCount()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-        public async Task<IActionResult> Detail(Guid id)
-        {
-            var ipAddress = httpContextAccessor.HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
-            var articeVisitors = await unitOfWork.GetRepository<ArticleVisitor>().GetAllAsync(null, x => x.Visitor, y => y.Article);
-            var article = await unitOfWork.GetRepository<Article>().GetAsync(x => x.Id == id);
-
-            var result = await articleService.GetArticleWithCategoryNonDeletedAsync(id);
-
-            var visitor = await unitOfWork.GetRepository<Visitor>().GetAsync(x => x.IpAddress == ipAddress);
-
-            var addArticleVisitors = new ArticleVisitor(article.Id, visitor.Id);
-
-            if (articeVisitors.Any(x => x.VisitorId == addArticleVisitors.VisitorId && x.ArticleId == addArticleVisitors.ArticleId))
-                return View(result);
-            else
-            {
-                await unitOfWork.GetRepository<ArticleVisitor>().AddAsync(addArticleVisitors);
-                article.ViewCount += 1;
-                await unitOfWork.GetRepository<Article>().UpdateAsync(article);
-                await unitOfWork.SaveAsync();
-            }
-
-            return View(result);
+            var count = await dashbordService.GetTotalCategoryCount();
+            return Json(count);
         }
     }
 }

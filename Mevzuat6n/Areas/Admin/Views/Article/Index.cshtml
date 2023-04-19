@@ -3,8 +3,8 @@
 @model List<ArticleDto>
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Makale Yönetimi /</span> Makaleler
+    <h4 class="fw-bold py-1 mb-1">
+        <span class="text-muted fw-light">Belge Yönetimi /</span> Mevzuat Belgeleri
     </h4>
 
     <!-- Basic Bootstrap Table -->
@@ -15,19 +15,26 @@
                 @if (!User.IsInRole($"{RoleConsts.User}"))
                 {
                     <a class="btn btn-success mb-3" asp-area="Admin" asp-controller="Article" asp-action="Add">
-                        Makale Ekle <i class="bx bx-plus"></i>
+                        Belge Ekle <i class="bx bx-plus"></i>
                     </a>
                 }
             }          
-            <a class="btn btn-success mb-3" asp-area="Admin" asp-controller="Article" asp-action="Add">
+@*            <a class="btn btn-success mb-3" asp-area="Admin" asp-controller="Article" asp-action="Add">
             Makale Ekle <i class="bx bx-plus"></i>
-            </a>
+            </a>*@
 
             <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>RG Tarih</th>
+                        <th>RG Sayı</th>
+                        <th>No</th>
                         <th>Başlık</th>
+                        <th>Bege Türü</th>
+                        <th>Kısa Bilgi</th>
                         <th>Kategori</th>
+                        <th>Konu</th>
+                        <th>Olay</th>
                         <th>Oluşturulma Tarihi</th>
                         <th>Oluşturan</th>
                         <th>Durum</th>
@@ -41,8 +48,15 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>RG Tarih</th>
+                        <th>RG Sayı</th>
+                        <th>No</th>
                         <th>Başlık</th>
+                        <th>Bege Türü</th>
+                        <th>Kısa Bilgi</th>
                         <th>Kategori</th>
+                        <th>Konu</th>
+                        <th>Olay</th>
                         <th>Oluşturulma Tarihi</th>
                         <th>Oluşturan</th>
                         <th>Durum</th>
@@ -58,8 +72,15 @@
                     @foreach (var article in Model)
                     {
                         <tr name="@article.Id">
+                            <td>@article.RgTarihi</td>
+                            <td>@article.RgSayi</td>
+                            <td>@article.MevzuatNo</td>
                             <td>@article.Title</td>
+                            <td>@article.MevzuatTipi</td>
+                            <td>@article.About</td>
                             <td>@article.Category.Name</td>
+                            <td>@article.Category.Subject</td>
+                            <td>@article.Category.KeyStady</td>
                             <td>@article.CreatedDate.ToShortDateString()</td>
                             <td>@article.CreatedBy</td>
                             <td>@(article.IsDeleted ? "Aktif Değil" : "Aktif")</td>

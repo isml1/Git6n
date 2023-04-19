@@ -1,9 +1,8 @@
 ﻿@model CategoryAddDto
+
 <div class="container-xxl flex-grow-1 container-p-y">
-
-
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Kategori Yönetimi /</span> Kategori Ekle
+        <span class="text-muted fw-light">Nevzuat Yönetimi /</span> Rejim veya Onaylanmış İşlem Ekleme
     </h4>
 
     <div class="row">
@@ -15,9 +14,29 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label asp-for="Name" id="defaultFormControlInput" class="form-label">Kategori ismi</label>
-                            <input asp-for="Name" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen kategori ismini giriniz." aria-describedby="defaultFormControlHelp">
+                            <label asp-for="Name" id="defaultFormControlInput" class="form-label">Mevzuat Türü - Rejim - İşlem</label>
+                            <input asp-for="Name" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Rejim veya İşlem giriniz." aria-describedby="defaultFormControlHelp">
                             <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Subject" id="defaultFormControlInput" class="form-label">Konu </label>
+                            <input asp-for="Subject" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Konu giriniz." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="KeyWords" id="defaultFormControlInput" class="form-label">Alt Başlık </label>
+                            <input asp-for="KeyWords" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Varsa alt başlık giriniz." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="KeyWords" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="KeyStady" id="defaultFormControlInput" class="form-label">Uygulanma alanı </label>
+                            <input asp-for="KeyStady" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Olay, işlem veya eşya giriniz." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="KeyStady" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description" id="defaultFormControlInput" class="form-label">Açıklama </label>
+                            <input asp-for="Description" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Açıklama giriniz." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
 
                         <div class="form-group">
@@ -28,6 +47,5 @@
             </div>
         </div>
     </div>
-
-
 </div>
+

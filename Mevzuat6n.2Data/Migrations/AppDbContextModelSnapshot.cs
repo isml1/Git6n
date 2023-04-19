@@ -53,21 +53,21 @@ namespace Mevzuat6n._2Data.Migrations
                         new
                         {
                             Id = new Guid("16ea936c-7a28-4c30-86a2-9a9704b6115e"),
-                            ConcurrencyStamp = "53d8df9a-e156-4a17-9134-4ab3087181c8",
+                            ConcurrencyStamp = "aff20b0c-10cb-4c0c-9371-baab1d7f044a",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("7cb750cf-3612-4fb4-9f7d-a38ba8f16bf4"),
-                            ConcurrencyStamp = "6dbff4c7-343e-4a43-a846-418672703d13",
+                            ConcurrencyStamp = "c9089c73-9860-482b-b546-9f5fc37dd204",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("edf6c246-41d8-475f-8d92-41dddac3aefb"),
-                            ConcurrencyStamp = "77433a35-b356-49d3-aa4f-05434fb145aa",
+                            ConcurrencyStamp = "eec3c325-89ce-4cd5-8e07-7421755f02e4",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -180,7 +180,7 @@ namespace Mevzuat6n._2Data.Migrations
                         {
                             Id = new Guid("cb94223b-ccb8-4f2f-93d7-0df96a7f065c"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "64ef1294-c226-41ab-9143-9f21e604f8bf",
+                            ConcurrencyStamp = "9858ea63-0c95-47b5-bd13-df41f9d35865",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Cem",
@@ -189,10 +189,10 @@ namespace Mevzuat6n._2Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH4fgX7+Q9di2d1z/dfYdgWzPq5Bp9jp2kukNVlWCGKvvLSU6o4NZbFyFuliu2LtTg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHibtUMA3DVYFfm5HX8qb5psz6jiMcyBn5cwBFqdVEZqxMIZYJMgY/bZpGx3UtRQbg==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "b46d944c-849c-438b-8db9-40b6b385d81a",
+                            SecurityStamp = "9ff402d4-f883-41f5-a780-f2a74eca7770",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -200,7 +200,7 @@ namespace Mevzuat6n._2Data.Migrations
                         {
                             Id = new Guid("3aa42229-1c0f-4630-8c1a-db879ecd0427"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "734b5297-f5e5-4aca-9c0f-d258259b3606",
+                            ConcurrencyStamp = "c6493169-8901-4f2f-b557-5f691152cda1",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -209,10 +209,10 @@ namespace Mevzuat6n._2Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIt4c+tSYv33foAqZv3ar2D6LAIfi0s7qC9haz6XdmZyxi0soTb+HfSpmm3eL2fdYQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIOxJ7a/Ya9qnclg/hSzaleziLxUlVx7aLEUZYXv6MHMDyJ71ghQ40MmP/x7iOQ1bA==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7271a862-61b0-44da-a46c-d4a9b008bc6c",
+                            SecurityStamp = "222ec12c-7f90-4606-80fc-af9061d29f73",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -317,6 +317,9 @@ namespace Mevzuat6n._2Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
@@ -342,10 +345,25 @@ namespace Mevzuat6n._2Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("MevzuatNo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MevzuatTipi")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("RgSayi")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("RgTarihi")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("SonlanmaTarihi")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -354,8 +372,14 @@ namespace Mevzuat6n._2Data.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int?>("VersionNo")
+                        .HasColumnType("int");
+
                     b.Property<int>("ViewCount")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("YururlukTarihi")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -370,11 +394,11 @@ namespace Mevzuat6n._2Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e37db5d3-a1a6-4bc1-b746-7fa59ce23929"),
+                            Id = new Guid("7550d451-f04a-46fd-b00e-0bf526e504ef"),
                             CategoryId = new Guid("4c569a9a-5f41-478f-9d17-69ac5b02ae0b"),
                             Content = "Asp.net Core Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 2, 10, 4, 6, 904, DateTimeKind.Local).AddTicks(1418),
+                            CreatedDate = new DateTime(2023, 4, 6, 12, 13, 21, 652, DateTimeKind.Local).AddTicks(942),
                             ImageId = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             IsDeleted = false,
                             Title = "Asp.net Core Deneme Makalesi 1",
@@ -383,11 +407,11 @@ namespace Mevzuat6n._2Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("115bef82-9bdd-4526-821c-1faf64409695"),
+                            Id = new Guid("4926979e-f02f-4dc2-a451-236941416b1a"),
                             CategoryId = new Guid("d23e4f79-9600-4b5e-b3e9-756cdcacd2b1"),
                             Content = "Visual Studio Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Sed porttitor lectus nibh. Nulla porttitor accumsan tincidunt. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam id dui posuere blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.",
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 2, 10, 4, 6, 904, DateTimeKind.Local).AddTicks(1427),
+                            CreatedDate = new DateTime(2023, 4, 6, 12, 13, 21, 652, DateTimeKind.Local).AddTicks(952),
                             ImageId = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             IsDeleted = false,
                             Title = "Visual Studio Deneme Makalesi 1",
@@ -430,8 +454,17 @@ namespace Mevzuat6n._2Data.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("KeyStady")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KeyWords")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -440,6 +473,9 @@ namespace Mevzuat6n._2Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -451,7 +487,7 @@ namespace Mevzuat6n._2Data.Migrations
                         {
                             Id = new Guid("4c569a9a-5f41-478f-9d17-69ac5b02ae0b"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 2, 10, 4, 6, 904, DateTimeKind.Local).AddTicks(3604),
+                            CreatedDate = new DateTime(2023, 4, 6, 12, 13, 21, 652, DateTimeKind.Local).AddTicks(3010),
                             IsDeleted = false,
                             Name = "ASP.NET Core"
                         },
@@ -459,7 +495,7 @@ namespace Mevzuat6n._2Data.Migrations
                         {
                             Id = new Guid("d23e4f79-9600-4b5e-b3e9-756cdcacd2b1"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 2, 10, 4, 6, 904, DateTimeKind.Local).AddTicks(3608),
+                            CreatedDate = new DateTime(2023, 4, 6, 12, 13, 21, 652, DateTimeKind.Local).AddTicks(3014),
                             IsDeleted = false,
                             Name = "Visual Studio 2022"
                         });
@@ -508,7 +544,7 @@ namespace Mevzuat6n._2Data.Migrations
                         {
                             Id = new Guid("f71f4b9a-aa60-461d-b398-de31001bf214"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 2, 10, 4, 6, 904, DateTimeKind.Local).AddTicks(3770),
+                            CreatedDate = new DateTime(2023, 4, 6, 12, 13, 21, 652, DateTimeKind.Local).AddTicks(3191),
                             FileName = "images/testimage",
                             FileType = "jpg",
                             IsDeleted = false
@@ -517,7 +553,7 @@ namespace Mevzuat6n._2Data.Migrations
                         {
                             Id = new Guid("d16a6ec7-8c50-4ab0-89a5-02b9a551f0fa"),
                             CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 4, 2, 10, 4, 6, 904, DateTimeKind.Local).AddTicks(3774),
+                            CreatedDate = new DateTime(2023, 4, 6, 12, 13, 21, 652, DateTimeKind.Local).AddTicks(3195),
                             FileName = "images/vstest",
                             FileType = "png",
                             IsDeleted = false
@@ -638,7 +674,7 @@ namespace Mevzuat6n._2Data.Migrations
             modelBuilder.Entity("Mevzuat6n._1Entities.Entities.ArticleVisitor", b =>
                 {
                     b.HasOne("Mevzuat6n._1Entities.Entities.Article", "Article")
-                        .WithMany()
+                        .WithMany("ArticleVisitors")
                         .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -657,6 +693,11 @@ namespace Mevzuat6n._2Data.Migrations
             modelBuilder.Entity("Mevzuat6n._1Entities.Entities.AppUser", b =>
                 {
                     b.Navigation("Articles");
+                });
+
+            modelBuilder.Entity("Mevzuat6n._1Entities.Entities.Article", b =>
+                {
+                    b.Navigation("ArticleVisitors");
                 });
 
             modelBuilder.Entity("Mevzuat6n._1Entities.Entities.Category", b =>

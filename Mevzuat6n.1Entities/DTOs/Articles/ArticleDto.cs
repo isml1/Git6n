@@ -11,14 +11,26 @@ namespace Mevzuat6n._1Entities.DTOs.Articles
     public class ArticleDto
     {
         public Guid Id { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public CategoryDto Category { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public Image Image { get; set; }
-        public AppUser User { get; set; }
-        public string CreatedBy { get; set; }
+        public string? Title { get; set; }
+        public string? Content { get; set; }
+        public CategoryDto? Category { get; set; }
+        public virtual DateTime CreatedDate { get; set; }
+        public Image? Image { get; set; }
+        public AppUser? User { get; set; }
+        public string? CreatedBy { get; set; }
         public bool IsDeleted { get; set; }
         public int ViewCount { get; set; }
+        public virtual string? ModifiedBy { get; set; }
+        public virtual string? DeletedBy { get; set; }   
+        public virtual DateTime? ModifiedDate { get; set; }
+        public virtual DateTime? DeletedDate { get; set; }
+        public int? MevzuatNo { get; set; }
+        public string? MevzuatTipi { get; set; }
+        public string? About { get; set; }
+        public int? VersionNo { get; set; }
+        public int? RgSayi { get; set; }
+        public DateTime? RgTarihi { get; set; }
+        public DateTime? YururlukTarihi { get; set; }
+        public DateTime? SonlanmaTarihi { get; set; }
     }
 }
